@@ -126,8 +126,8 @@ namespace jde
     {
         m_message_ = fmt::format("Exception [{}] occured\n", getTypeName<ExceptionType>());
 #ifdef _DEBUG
-        m_message += fmt::format("  In file: '{}' (line {})\n", info.file, info.line);
-        m_message += fmt::format("  In function: {}\n", info.function);
+        m_message_ += fmt::format("  In file: '{}' (line {})\n", info.filename, info.line);
+        m_message_ += fmt::format("  In function: {}\n", info.funcname);
 #endif
     }
 } // namespace jde
