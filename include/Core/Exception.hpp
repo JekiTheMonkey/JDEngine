@@ -89,12 +89,8 @@ namespace jde
     template <class... Args>
     void BaseException::error(Args&&... args)
     {
-        // Forward the passed arguments to fmt
-        const std::string errorMsg = fmt::vformat(m_message_, fmt::make_format_args(std::forward<Args>(args)...));
-        // const std::string errorMsg = fmt::format(std::forward<Args>(args)...);
-
         // Append error message to the string
-        m_message_ += fmt::format("  Error: {}", errorMsg);
+        m_message_ += fmt::format("  Error: {}", std::forward<Args>(args)...);
 
         // Output the error to standard error stream if logger is not initialized
         if (!Debug::Log)
@@ -104,10 +100,8 @@ namespace jde
     template <class... Args>
     void BaseException::hint(Args&&... args)
     {
-        // Forward the passed arguments to fmt
-        const std::string hintMsg = fmt::format(std::forward<Args>(args)...);
         // Append hint message to the string
-        m_message_ += fmt::format("  Hint: {}\n", hintMsg);
+        m_message_ += fmt::format("  Hint: {}\n", std::forward<Args>(args)...);
     }
 
     inline const char *BaseException::what() const noexcept
