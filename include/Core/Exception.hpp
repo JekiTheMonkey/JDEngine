@@ -28,6 +28,8 @@ namespace jde
 #define EXC_INFO_WRAPPER() DebugInfo(__FILE__, __LINE__, __func__)
 #define EXC_INFO EXC_INFO_WRAPPER()
 
+#define OBJECT_NAME(x) #x
+
     template <typename T>
     constexpr auto getTypeName() -> std::string_view
     {

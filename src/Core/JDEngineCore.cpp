@@ -9,7 +9,7 @@ namespace jde
     {
         Debug::initLogger();
 
-        Debug::debug("<JDEngine> Logger has been initialized.");
+        Debug::Log->debug("<JDEngine> Logger has been initialized.");
 
         // Debug::debug("<JDEngine> Initialising NullTexture.");
         // Graphics::MakeNullTexture();

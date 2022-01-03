@@ -6,7 +6,7 @@
 
 
 int main(int, char**)
-{            
+{
     using namespace jde;
 
     try
@@ -15,8 +15,8 @@ int main(int, char**)
     }
     catch(const std::exception &e)
     {
-        Debug::error(e.what());
-        Debug::error("Error occurred while initializing JDEngine");
+        Debug::Log->error(e.what());
+        Debug::Log->error("Error occurred while initializing JDEngine");
         return 1;
     }
 
@@ -30,8 +30,8 @@ int main(int, char**)
     {
         if (Debug::Log)
         {
-            Debug::error("The following error occurred while running JDEngine");
-            Debug::error(e.what());
+            Debug::Log->error("The following error occurred while running JDEngine");
+            Debug::Log->error(e.what());
         }
         else
         {

@@ -1,21 +1,35 @@
 #pragma once
 
+#include <Debug/Logger.hpp>
+
 #include <SFML/System/NonCopyable.hpp>
 
-#include <Debug/Logger.hpp>
+// TODO Make separate headers for fwds
+// Forward declarations
+namespace jde
+{
+    namespace Config
+    {
+        class ConfigurationManager;
+    } // namespace Config
+} // namespace jde
 
 
 namespace jde::Engine
 {
     class Engine : private sf::NonCopyable
     {
+    public:
+        Engine();
+        ~Engine();
+
+        void init();
+        void run();
+
+        // *getters*
+
+
     protected:
-        bool m_initialized = false;
-        // *all the uptrs to some basic stuff*
-        Debug::Logger::weak_type m_log_;
-
-        // *all the uptrs to resource managers*
-
         // Initialization
         void initConfig();
         void initLogger();
@@ -36,13 +50,12 @@ namespace jde::Engine
         void purge();
 
 
-    public:
-        Engine();
-        ~Engine();
+    protected:
+        bool m_initialized = false;
+        // *all the uptrs to some basic stuff*
+        Debug::Logger::weak_type m_log_;
 
-        void init();
-        void run();
-
-        // *getters*
+        // *all the uptrs to resource managers*
+        std::unique_ptr<Config::ConfigurationManager> m_config_;
     };
 } // namespace jde::Engine

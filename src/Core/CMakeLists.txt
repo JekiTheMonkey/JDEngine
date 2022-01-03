@@ -11,6 +11,8 @@ file(GLOB_RECURSE JDE_SOURCES CONFIGURE_DEPENDS
 
 add_library(${PROJECT_NAME} ${JDE_HEADERS} ${JDE_SOURCES})
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE _DEBUG)
+
 target_include_directories(${PROJECT_NAME}
     PUBLIC
         $<INSTALL_INTERFACE:${JDEngine_SOURCE_DIR}/include/Core>

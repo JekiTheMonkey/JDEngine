@@ -33,7 +33,7 @@ target_compile_options(
     -Wsign-promo
 )
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE -D_DEBUG)
+# target_compile_definitions(${PROJECT_NAME} PRIVATE SOME_DEFINITION)
 
 target_link_libraries(${PROJECT_NAME} JDEngineCore)
 target_link_libraries(${PROJECT_NAME} Threads::Threads)
