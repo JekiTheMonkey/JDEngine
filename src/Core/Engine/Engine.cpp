@@ -1,6 +1,9 @@
 #include <Config/Config.hpp>
 #include <Engine/Engine.hpp>
 #include <Engine/Exceptions.hpp>
+#include <System/Window.hpp>
+
+#include <SFML/Window/Event.hpp>
 
 
 namespace jde::Engine
@@ -33,6 +36,13 @@ namespace jde::Engine
     {
         if (!m_initialized)
             throw Exceptions::UnitializedEngine(EXC_INFO);
+
+        m_window_->create();
+
+        while (m_window_->isOpen())
+        {
+            update();
+        }
     }
 
     void Engine::initConfig()
@@ -70,6 +80,8 @@ namespace jde::Engine
 
     void Engine::initWindow()
     {
+        Debug::Log->debug("<Engine> Window configuration");
+        m_window_ = std::make_unique<System::Window>(*m_config_);
     }
 
     void Engine::initScene()
@@ -78,10 +90,32 @@ namespace jde::Engine
 
     void Engine::handleWindowEvents()
     {
+        sf::Event event;
+        while (m_window_->pollEvent(event))
+        {
+            switch (event.type)
+            {
+            case sf::Event::Closed:
+                m_window_->close();
+                break;
+            case sf::Event::Resized:
+                m_window_->setSize(event.size.width, event.size.height);
+                break;
+            case sf::Event::KeyPressed:
+                // input require refresh
+                break;
+            
+            default:
+                break;
+            }
+        }
     }
 
     void Engine::update()
     {
+        handleWindowEvents();
+
+        // other updates
     }
 
     void Engine::render()
