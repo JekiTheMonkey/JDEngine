@@ -1,28 +1,11 @@
 #pragma once
 
+#include <Config/ConfigFwd.hpp>
 #include <Debug/Logger.hpp>
+#include <Engine/ResourceManagerFwd.hpp>
+#include <System/WindowFwd.hpp>
 
 #include <SFML/System/NonCopyable.hpp>
-
-// TODO Make separate headers for fwds
-// Forward declarations
-namespace jde
-{
-    namespace Config
-    {
-        class ConfigurationManager;
-    } // namespace Config
-
-    namespace Engine
-    {
-        class ResourceManager;
-    } // namespace Engine
-
-    namespace System
-    {
-        class Window;
-    } // namespace System
-} // namespace jde
 
 
 namespace jde::Engine

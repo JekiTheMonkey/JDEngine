@@ -1,14 +1,10 @@
 #pragma once
 
+#include <Config/ConfigFwd.hpp>
+
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include <string>
-
-
-namespace jde::Config
-{
-    class ConfigurationManager;
-} // namespace jde::Config
 
 
 namespace jde::System
