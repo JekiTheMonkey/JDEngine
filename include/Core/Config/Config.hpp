@@ -31,9 +31,6 @@ namespace jde::Config
     class ConfigurationManager
     {
         public:
-
-
-        public:
             void load();
 
             template <typename T>
@@ -61,7 +58,7 @@ namespace jde::Config
         // Try to get the object, control if it was found
         auto found = m_config_.find(key);
         if (found == m_config_.end())
-            throw Exceptions::NonExistingObject(EXC_INFO, parToStr(key));
+            throw Exceptions::NonExistingObject(parToStr(key), EXC_INFO);
 
         // Control if variant holds the right object type
         if (const auto tPtr(std::get_if<T>(&found->second)); tPtr)
@@ -72,7 +69,7 @@ namespace jde::Config
         else
         {
             const auto stringPassedType = getTypeName<T>();
-            throw Exceptions::InvalidType(EXC_INFO, parToStr(key), stringPassedType);
+            throw Exceptions::InvalidType(parToStr(key), stringPassedType, EXC_INFO);
         }
     }
 
@@ -82,7 +79,7 @@ namespace jde::Config
         // Try to get the object, control if it was found
         auto found = m_config_.find(key);
         if (found == m_config_.end())
-            throw Exceptions::NonExistingObject(EXC_INFO, parToStr(key));
+            throw Exceptions::NonExistingObject(parToStr(key), EXC_INFO);
 
         // Return the pointer to the object if it everything is right, otherwise nullptr
         return std::get_if<T>(&found->second);
