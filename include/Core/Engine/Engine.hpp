@@ -13,6 +13,11 @@ namespace jde
         class ConfigurationManager;
     } // namespace Config
 
+    namespace Engine
+    {
+        class ResourceManager;
+    } // namespace Engine
+
     namespace System
     {
         class Window;
@@ -63,5 +68,6 @@ namespace jde::Engine
         // *all the uptrs to resource managers*
         std::unique_ptr<Config::ConfigurationManager> m_config_;
         std::unique_ptr<System::Window> m_window_;
+        std::unique_ptr<ResourceManager> m_resources_;
     };
 } // namespace jde::Engine

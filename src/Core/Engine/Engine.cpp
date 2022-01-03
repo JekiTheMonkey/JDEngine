@@ -1,6 +1,7 @@
 #include <Config/Config.hpp>
 #include <Engine/Engine.hpp>
 #include <Engine/Exceptions.hpp>
+#include <Engine/ResourceManager.hpp>
 #include <System/Window.hpp>
 
 #include <SFML/Window/Event.hpp>
@@ -76,6 +77,7 @@ namespace jde::Engine
 
     void Engine::initResources()
     {
+        m_resources_ = std::make_unique<ResourceManager>();
     }
 
     void Engine::initWindow()
